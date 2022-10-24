@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p v-if="numero > 0">es mayor a 0</p>
+        <p v-else-if="numero < 0">es menor a 0</p>
+        <p v-else>numero es igual a cero</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                numero: 0
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "tareas": [
+    {
+      "titulo": "primera tarea",
+      "contenido": "Contenido primera tarea",
+      "terminado": true,
+      "id": 1
+    },
+    {
+      "titulo": "tarea 2",
+      "contenido": null,
+      "terminado": true,
+      "id": 2
+    },
+    {
+      "titulo": "tarea 3",
+      "contenido": null,
+      "terminado": false,
+      "id": 3
+    },
+    {
+      "titulo": "tarea 6",
+      "contenido": null,
+      "terminado": false,
+      "id": 4
+    }
+  ]
+}

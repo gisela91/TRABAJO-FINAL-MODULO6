@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="components/persona.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="getPersonas()">traer personas</button>
+        
+        <p>
+            <input type="text" v-model="idPersona">
+            <button @click="getPersonaById()">buscar</button>
+            <persona v-if="personaEncontrada.id !=null" :persona="personaEncontrada"></persona>
+        </p>    
+            <input type="text" v-model="nuevaPersona.id">
+            <input type="text" v-model="nuevaPersona.nombre">
+            <input type="text" v-model="nuevaPersona.direccion">
+            <button @click="crearPersona()">crear persona</button>
+           
+      
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                idPersona: 0,
+    
+                personaEncontrada: {
+                    id: null,
+                    nombre: null,
+                    direccion: null      
+                },
+                nuevaPersona: {
+                    id: null,
+                    nombre: null,
+                    direccion: null
+                }
+            
+            },
+            methods:{
+                getPersonas(){
+                    axios
+                    //get
+                    .get("http://localhost:3333/persona")
+                    .then(response => console.log(response))
+                    .catch(e => console.log(e))
+                },
+                crearPersona(){ 
+                    //post
+                    axios({
+                        method: "post",
+                        url: "http://localhost:3333/persona", 
+                        data: this.nuevaPersona
+                    })
+                    .then(response => console.log(response))
+                    .catch(e => console.log(e))
+                },
+                getPersonaById(id){
+                    axios
+                    .get("http://localhost:3333/persona/"+this.idPersona)
+                    .then(response => {
+                        console.log(response);
+                       
+                        this.personaEncontrada.id = response.data.id;
+                        this.personaEncontrada.nombre = response.data.nombre;
+                        this.personaEncontrada.direccion = response.data.direccion;
+                    })
+                    .catch(e=>console.log(e));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

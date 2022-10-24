@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <ul>
+            productos
+            <li v-for="producto of productos">
+                <p v-for="(value, key) of producto">
+                    {{key}} : {{value}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                productos: [
+                    {
+                        id: 1,
+                        nombre: "Juan",
+                        telefono: 78987879,
+                        edad: 20
+                    },
+                    {
+                        id: 2,
+                        nombre: "Maria",
+                        telefono: 73456487,
+                        edad: 15
+                    },
+                    {
+                        id: 3,
+                        nombre: "Carlos",
+                        telefono: 70834521,
+                        edad: 22
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
